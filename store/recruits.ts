@@ -13,25 +13,23 @@ export const fetchRecruits = createAsyncThunk("recruits/fetchRecruits", async (p
 
 const initialState = {
   recruits: [],
-  loading: true,
   stopFetching: false,
 } as any;
 
 const recruitsSlice = createSlice({
   name: "recruits",
   initialState,
-  reducers: {},
+  reducers: {
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchRecruits.fulfilled, (state, action) => {
-      state.loading = false;
       if (action.payload.length < perPage) {
         state.stopFetching = true;
       } 
       state.recruits.push(...action.payload);
-    });
-
-    builder.addCase(fetchRecruits.pending, (state, action) => {
-      state.loading = true;
     });
   }
 })

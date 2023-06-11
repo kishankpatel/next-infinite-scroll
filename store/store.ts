@@ -7,15 +7,5 @@ export const store = configureStore({
   },
 });
 
-// export function makeStore() {
-//   return configureStore({
-//     reducer: {
-//       recruits: recruitsReducer,
-//     },
-//   });
-// }
-
-// export const store = makeStore();
-
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
