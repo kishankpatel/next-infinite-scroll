@@ -18,6 +18,10 @@ export default function Home() {
     }
   };
 
+  const increasePageNum = () => {
+    setPageNum((prev) => prev + 1);
+  };
+
   const { recruits, stopFetching } = useSelector(
     (state: RootState) => state.recruits
   );
@@ -39,10 +43,6 @@ export default function Home() {
       document.removeEventListener("scroll", handleScrollEvent);
     };
   }, []);
-
-  const increasePageNum = () => {
-    setPageNum((prev) => prev + 1);
-  };
 
   return (
     <div className="mt-6">
